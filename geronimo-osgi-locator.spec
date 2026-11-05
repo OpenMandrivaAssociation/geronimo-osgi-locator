@@ -21,7 +21,13 @@ implementations, including through the OSGi registry when a framework
 is present.
 
 %prep
-%setup -q -c
+%setup -q -c -T
+# The builders' rpmuncompress passes a sources jar to tar.
+python - %{SOURCE0} <<'PY'
+import sys
+import zipfile
+zipfile.ZipFile(sys.argv[1]).extractall(".")
+PY
 mkdir -p src/main/java
 mv org src/main/java/
 cp -a META-INF/LICENSE LICENSE
