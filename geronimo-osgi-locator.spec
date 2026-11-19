@@ -1,5 +1,5 @@
 Name:		geronimo-osgi-locator
-Version:	1.0
+Version:	1.1
 Release:	1
 Summary:	Geronimo OSGi provider locator
 Group:		Development/Java
@@ -18,7 +18,8 @@ BuildOption(install):	--file-name %{name}
 %description
 ProviderLocator used by Geronimo specification jars to find
 implementations, including through the OSGi registry when a framework
-is present.
+is present. 1.1 documents that a missing ProviderRegistry leaves the
+locator on the classpath lookup, and drops an unused Bundle import.
 
 %prep
 %setup -q -c -T
